@@ -19,7 +19,8 @@ exports.login = function(req, res, next) {
                 if(data.length <= 0){
                   return res.status(200).json({contents:[],status:"invalid credentials"});
                 }
-                return res.status(200).json({contents:data,status:"user found"});
+                console.log(JSON.stringify(data));
+                return res.status(200).json({contents:JSON.stringify(data),status:"user found"});
 
 
         });
