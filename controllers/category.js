@@ -45,7 +45,7 @@ exports.createCategory = function(req, res, next) {
 };
 
 exports.deleteCategory = function(req, res, next) {
-  console.log();
+  console.log(req.body);
     categoryModel.Delete(req.body, function(err, data){
         if (err) {
                 console.log(err);
@@ -58,6 +58,22 @@ exports.deleteCategory = function(req, res, next) {
                 // }
                 // console.log(JSON.stringify(data));
                 // return res.status(200).json({contents:JSON.stringify(data),status:"category found"});
+
+
+        });
+};
+
+exports.searchCategory = function(id, res, next) {
+  console.log(id);
+    categoryModel.Search(id, function(err, data){
+        if (err) {
+                console.log(err);
+                return res.send(err);
+              }
+                if(data.length <= 0){
+                  return res.status(200).json({contents:[],status:"0",statusText:"No category found"});
+                }
+                return res.status(200).json({contents:JSON.stringify(data),status:"1",statusText:"category found"});
 
 
         });

@@ -12,6 +12,9 @@ router.post('/createCategory',category.createCategory);
 router.post('/showCategory',category.showCategory);
 router.post('/deleteCategory',category.deleteCategory);
 router.post('/uploadCateImage',uploadImage.uploadCateImage);
+router.get('/searchCategory/:id',function(req,res,next){
+  category.searchCategory(req.params.id,res,next);
+});
 
 // router.get('/addUser', function(req, res, next) {
 //   res.send('respond with a resource');
