@@ -78,3 +78,22 @@ exports.searchCategory = function(id, res, next) {
 
         });
 };
+
+exports.updateCategory = function(req, res, next) {
+  console.log(req.body);
+    categoryModel.Update(req.body, function(err, data){
+        if (err) {
+                console.log(err);
+                return res.send(err);
+              }
+                console.log("hello"+data);
+                return res.status(200).json({contents:data,status:"1",statusText:"Category Updated"});
+                // if(data.length <= 0){
+                //   return res.status(200).json({contents:[],status:"No category found"});
+                // }
+                // console.log(JSON.stringify(data));
+                // return res.status(200).json({contents:JSON.stringify(data),status:"category found"});
+
+
+        });
+};

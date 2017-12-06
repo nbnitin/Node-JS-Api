@@ -34,9 +34,29 @@ var searchCategory = function(details, cb) {
     })
 }
 
+var updateCategory = function(details, cb) {
+    var db = s.dbService.db;
+    var myquery = { _id: new mongodb.ObjectID(details._id) };
+    var newValues = {};
+
+    if(details.cateImage != null && details.cateImage != ""){
+      newValues = {cateName: details.cateName,cateImage: details.cateImage};
+    } else{
+      newValues = {cateName: details.cateName};
+    }
+
+    console.log(newValues + "hjhsdj");
+
+    db.collection("category").updateOne(myquery, newValues,function(err, res1) {
+        if (err) cb(err, res1);
+        cb(err, res1);
+    });
+}
+
 module.exports = {
     Create: createCategory,
     Show: showCategory,
     Delete: deleteCategory,
-    Search: searchCategory
+    Search: searchCategory,
+    Update: updateCategory
 }
