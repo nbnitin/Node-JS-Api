@@ -59,7 +59,6 @@ exports.uploadProductImage = function(req,res,next){
   }).single('productImage');
   upload(req,res,function(err){
     if(err){return  res.status(200).json({contents:[],statusText:"Unable to upload, Not an image",status:"0"});}
-     console.log(req);
-     res.status(200).json({contents:req.file.filename,statusText:"File Uploaded",status:"1"});
+    res.status(200).json({contents:req.file.filename,statusText:"File Uploaded",status:"1"});
   });
 };

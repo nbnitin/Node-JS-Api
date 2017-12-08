@@ -18,12 +18,18 @@ router.post('/updateCategory',category.updateCategory);
 
 router.post('/createProduct',product.createProduct);
 router.post('/deleteProduct',product.deleteProduct);
+router.post('/updateProduct',product.updateProduct);
+
 
 router.post('/uploadProductImage',uploadImage.uploadProductImage);
 
 
 router.get('/searchCategory/:id',function(req,res,next){
   category.searchCategory(req.params.id,res,next);
+});
+
+router.get('/searchProduct/:id',function(req,res,next){
+  product.searchProduct(req.params.id,res,next);
 });
 
 // router.get('/addUser', function(req, res, next) {
